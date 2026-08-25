@@ -1,0 +1,1 @@
+-- Run schema/schema.sql via npm run migrate.
