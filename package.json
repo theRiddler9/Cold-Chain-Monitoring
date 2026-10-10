@@ -12,6 +12,7 @@
     "start": "tsx cmd/api/main.ts",
     "migrate": "tsx scripts/migrate.ts",
     "seed": "tsx scripts/seed.ts",
+    "simulate": "tsx scripts/simulate.ts",
     "typecheck": "tsc --noEmit && npm run typecheck --workspace=@cold-chain/web"
   },
   "dependencies": {
