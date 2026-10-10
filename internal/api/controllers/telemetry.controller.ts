@@ -1,6 +1,7 @@
 import type { Request, Response } from 'express';
 import { telemetrySchema } from '../validators/telemetry.schema.js';
 import { insertTelemetry, getLastTelemetry } from '../../repositories/telemetry.repository.js';
+import { evaluateTelemetry } from '../services/rules.service.js';
 import crypto from 'node:crypto';
 
 export async function createTelemetry(req: Request, res: Response) {
@@ -26,7 +27,7 @@ export async function createTelemetry(req: Request, res: Response) {
   const reading = await insertTelemetry(data);
   
   // Fire and forget rules engine check
-  // evaluateTelemetry(reading).catch(console.error);
+  evaluateTelemetry(reading).catch(console.error);
 
   return res.status(201).json(reading);
 }
